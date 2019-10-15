@@ -72,3 +72,98 @@ spaces = spaces.len();
   - Charactor Type
     + `char` 타입은 작은 따옴표를 사용한다.
     + Unicode scalar를 표현하는 값이며 이는 ASCII보다 많은 표현을 가능하게 합니다.
+* Compound Types
+  - Tuple type
+    + 튜플은 다양한 유형의 몇 가지 값을 하나의 유형으로 그룹화 하는 것을 말한다.
+    + 고정된 길이이며 줄이거나 늘리지 못한다.
+    + ``` rust
+      fn main() {
+        let tup: (i32, f64, u8) = (500, 6.4, 1);
+      }
+      ```
+  - Array type
+    + Tuple과는 다르게 원소들이 모두 동일한 data type을 가져야 한다.
+    + 고정길이이다.
+    + Heap이 아닌 stack 에 할당된다.
+    
+## Function
+&nbsp;함수 시그니처는 `fn function_name([param_name: param_type]*) [-> return_type]` 이다.  
+&nbsp;함수 body는 statements와 expressions로 이루어져 있다.
+* Statements : 어떠한 행동을 수행하도록 하는 것이고 return이 없다. 실행가능한 최소의 독립적인 코드. 여러개의 expression과 프로그래밍 키워드를 포함.
+* Expressions : 결과를 나타낼 수 있는 단위. 하나의 값으로 표현될 수 있는 코드
+* ``` rust
+  fn main() {
+      let x = 5; // statement
+
+      let y = { // expression단위는 { expresion }
+          let x = 3;
+          x + 1 // expression의 마지막 결과 리턴은 ;를 붙이지 않는다.
+      };
+
+      println!("The value of y is: {}", y);
+  }
+  ```
+&nbsp;함수의 리턴은 `return` 키워드를 사용하기도 하지만 대부분의 함수는 마지막 expression을 암묵적으로 리턴한다. 
+
+## Control Flow
+* if
+  * ``` rust
+    fn main() {
+      let number = 3;
+
+      if number < 5 {
+          println!("condition was true");
+      } else {
+          println!("condition was false");
+      }
+      // 아래처럼 let statement와 함께 사용가능
+      // 단, expression의 리턴 타입이 동일해야함
+      let number = if condition {
+          5
+      } else {
+          6
+      };
+    }
+    ```
+* loop
+  * ``` rust
+    fn main() {
+        loop {
+            println!("again!");
+        }
+
+        let mut counter = 0;
+        // let statment와 함께 사용 가능
+        let result = loop {
+            counter += 1;
+
+            if counter == 10 {
+                break counter * 2;
+            }
+        };
+    }
+    ```
+* while
+  * ``` rust
+    fn main() {
+        let mut number = 3;
+
+        while number != 0 {
+            println!("{}!", number);
+
+            number -= 1;
+        }
+
+        println!("LIFTOFF!!!");
+    }
+    ```
+* for
+  * ``` rust
+    fn main() {
+        let a = [10, 20, 30, 40, 50];
+
+        for element in a.iter() {
+            println!("the value is: {}", element);
+        }
+    }
+    ```

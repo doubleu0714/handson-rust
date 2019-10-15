@@ -31,4 +31,30 @@ fn main() {
     // let overflow : i8 = z;
     let char_val: char = '박'; // unicode이므로 한글도 가능
     println!("The value of charVal is : {}", char_val);
+
+    // Tuple
+    let tup = (13, '가', 15.01);
+    // destructuring
+    let (x, y, z) = tup;
+    println!("x = {}, y = {}, z = {}", x, y, z);
+    println!("0 = {}, 1 = {}, 2 = {}", tup.0, tup.1, tup.2);
+
+    // Array
+    let array1 = [1, 2, 3, 4, 5];
+    // let array2: [char; 3] = ['r', '가', '나', '다']; // fixed length이기때문에 이렇게 할당 할 수 없음.
+    let array2: [char; 4] = ['r', '가', '나', '다'];
+    // println!("array1[10] = {}", array1[10]); // 유효하지 않은 인덱스로 접근하면 컴파일 오류가 발생
+
+    // sum
+    println!("sum {}", sum(1, 2));
+    let testVal = 15;
+    let expressionVal = {
+        let testVal = 3;
+        testVal + 1
+    };
+    println!("testVal : {}, expressionVal : {}", testVal, expressionVal);
+}
+
+fn sum(param1: i32, param2: i32) -> i32 {
+    param1 + param2
 }
